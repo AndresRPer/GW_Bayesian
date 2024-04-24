@@ -46,19 +46,44 @@ N <- 10
 #Población inicial
 initial_population <- c(Type1 = 100, Type2 = 100)
 
+#Matriz para establecer los counts de cada tipo en cada generación
+
+Z <- matrix(nrow = 2, ncol = N)
+Z[, 1] <- initial_population
+
+#Generamos datos sintéticos
+set.seed(182120) #Resultados reproducibles
+for (n in 1:(N - 1)) {
+  #Counts en la genreación actual
+  current_counts <- Z[,n]
+  
+  #Counts esperados de acuerdo con las probs de transición
+  expected_counts <- matrix(c(p1_true[1] * current_counts[1] + p2_true[1] * current_counts[2],
+                              p1_true[2] * current_counts[1] + p2_true[2] * current_counts[2]),
+                            nrow = 2, byrow = TRUE)
+  
+  #Distribución multinomial para generar los counts en la sig generación
+  Z[, n+1] <- rmultinom(1, sum(current_counts), c(expected_counts[1, ] / sum(expected_counts), expected_counts[2, ] / sum(expected_counts)))
+}
+
+#Transponemos para el modelo de Stan acepte los datos
+Z <- base::t(Z)
+
+##Fit del modelo (QUE SALGA POR FAVOR) ------------------------------
+
+#Prep de los datos
+stan_data_prueba <- list(N = N, Z = t(Z))
+
+#Fit
+fit_prueba <- mod_prueba$sample(data = stan_data_prueba, chains = 4,
+                                 iter_sampling = 1000,
+                                iter_warmup = 500)
+#Resumen del fit
+print(fit_prueba$summary())
+
+
+
 
 
 
  
-
-
-
-
-
-
-
-
-
-
-
-
