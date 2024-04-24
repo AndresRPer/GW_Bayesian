@@ -90,6 +90,18 @@ mcmc_dens(draws, pars = c("p1[1]","p1[2]"))
 color_scheme_set("teal")
 mcmc_dens(draws, pars = c("p2[1]","p2[2]"))
 
+#Análisis de las p's
+draws_mcmc <- as.mcmc(draws)
+mcmc_list_prueba <- as.mcmc.list(draws_mcmc)
+
+#Resumen
+summary(mcmc_list_prueba)
+
+#Plots importantes #OJO: Solo nos fijamos en las p's
+plot(draws_mcmc, trace = TRUE, density = TRUE, smooth = TRUE,
+     auto.layout = TRUE, ask = dev.interactive())
+
+
 
 
 
