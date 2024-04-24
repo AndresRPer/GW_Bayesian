@@ -100,10 +100,3 @@ summary(mcmc_list_prueba)
 #Plots importantes #OJO: Solo nos fijamos en las p's
 plot(draws_mcmc, trace = TRUE, density = TRUE, smooth = TRUE,
      auto.layout = TRUE, ask = dev.interactive())
-
-
-
-
-
-
- 
