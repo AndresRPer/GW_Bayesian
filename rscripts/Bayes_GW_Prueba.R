@@ -76,10 +76,11 @@ stan_data_prueba <- list(N = N, Z = t(Z))
 
 #Fit
 fit_prueba <- mod_prueba$sample(data = stan_data_prueba, chains = 4,
-                                 iter_sampling = 1000,
-                                iter_warmup = 500)
+                                parallel_chains = 2, iter_sampling = 10000,
+                                iter_warmup = 5000)
 #Resumen del fit
 print(fit_prueba$summary())
+print(fit_prueba$diagnostic_summary())
 
 
 
