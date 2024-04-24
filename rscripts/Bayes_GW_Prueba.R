@@ -82,6 +82,13 @@ fit_prueba <- mod_prueba$sample(data = stan_data_prueba, chains = 4,
 print(fit_prueba$summary())
 print(fit_prueba$diagnostic_summary())
 
+#Veamos las posteriores marginales
+draws <- as_draws_df(fit_prueba)
+
+color_scheme_set("purple")
+mcmc_dens(draws, pars = c("p1[1]","p1[2]"))
+color_scheme_set("teal")
+mcmc_dens(draws, pars = c("p2[1]","p2[2]"))
 
 
 
