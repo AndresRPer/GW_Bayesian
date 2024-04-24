@@ -30,7 +30,26 @@ sin_ejes <- theme(axis.ticks = element_blank(), axis.text = element_blank())
 ## Llamamos el modelo ----------------------------------------------------------
 
 mod_prueba <- cmdstan_model("models/GW_Bayesian_Prueba.stan")
+#Parece que compila bien :)
 
+##Prueba con datos sintéticos --------------------------------------------------
+#Si esto nos sale ya estamos del otros lado, solo habría que ajustar la manera en la que aparecen los datos
+
+
+#P's verdaderas
+p1_true <- c(0.7, 0.3)
+p2_true <- c(0.4, 0.6)
+
+#Num generaciones
+N <- 10
+
+#Población inicial
+initial_population <- c(Type1 = 100, Type2 = 100)
+
+
+
+
+ 
 
 
 
