@@ -1,0 +1,36 @@
+---
+title: "Install CmdStan"
+output: pdf_document
+---
+## Installing the R package 
+
+Run the following chunks if you don't have CmdStanR and/or CmdStan installed.
+
+You can install the latest beta release of the CmdStanR R package with
+```{r, eval = FALSE}
+# Recommended running this in a fresh R session or restarting your current session
+install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
+```
+
+## Installing CmdStan
+
+To instead install the latest development version of the package from GitHub use
+```{r, eval = FALSE}
+#Run this if you need to:
+#install.packages("remotes")
+remotes::install_github("stan-dev/cmdstanr")
+```
+If you don't already have CmdStan installed, then, in addition to installing
+
+the R package, it is also necessary to install CmdStanR's
+```{r, eval = FALSE}
+install_cmdstan()
+```
+A suitable C++ toolchain is also required.
+
+For more intructions and troubleshooting issues visit
+
+https://mc-stan.org/cmdstanr/
+
+https://mc-stan.org/cmdstanr/articles/cmdstanr.html
+

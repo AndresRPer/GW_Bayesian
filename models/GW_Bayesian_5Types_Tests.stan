@@ -1,6 +1,6 @@
 data {
   int<lower = 0> N; //Number of generations
-  array[5,N] int<lower=1> Z; // Observed counts per generation per type
+  array[5,N] int<lower=0> Z; // Observed counts per generation per type
 }
 
 parameters {
@@ -13,11 +13,11 @@ parameters {
 
 model {
   //Priors
-  p1 ~ dirichlet(rep_vector(1,5));
-  p2 ~ dirichlet(rep_vector(1,5));
-  p3 ~ dirichlet(rep_vector(1,5));
-  p4 ~ dirichlet(rep_vector(1,5));
-  p5 ~ dirichlet(rep_vector(1,5));
+  p1 ~ dirichlet([1,1,1,1,1]);
+  p2 ~ dirichlet([1,1,1,1,1]);
+  p3 ~ dirichlet([1,1,1,1,1]);
+  p4 ~ dirichlet([1,1,1,1,1]);
+  p5 ~ dirichlet([1,1,1,1,1]);
   
   //Likelihood
   for (n in 1:N-1) {
