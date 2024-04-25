@@ -69,7 +69,7 @@ for (n in 1:(N - 1)) {
 #Transponemos para el modelo de Stan acepte los datos
 Z <- base::t(Z)
 
-##Fit del modelo (QUE SALGA POR FAVOR) ------------------------------
+##Fit del modelo (QUE SALGA POR FAVOR) -----------------------------------------
 
 #Prep de los datos
 stan_data_prueba <- list(N = N, Z = t(Z))
