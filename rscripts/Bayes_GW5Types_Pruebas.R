@@ -8,11 +8,11 @@ mod_5types <- cmdstan_model("models/GW_Bayesian_5Types_Tests.stan")
 
 #Probs de transición reales
 transition_probs <- matrix(c(
-  0.1, 0.2, 0.3, 0.1, 0.3,  
-  0.2, 0.1, 0.3, 0.3, 0.1,  
-  0.3, 0.2, 0.1, 0.3, 0.1,  
-  0.1, 0.3, 0.3, 0.1, 0.2,  
-  0.3, 0.1, 0.2, 0.1, 0.3   
+  0.2, 0.2, 0.2, 0.2, 0.2,  
+  0.2, 0.2, 0.2, 0.2, 0.2,  
+  0.2, 0.2, 0.2, 0.2, 0.2,  
+  0.2, 0.2, 0.2, 0.2, 0.2,  
+  0.2, 0.2, 0.2, 0.2, 0.2  
 ), byrow = TRUE, nrow = 5)
 
 #Poblaciones iniciales para cada tipo
@@ -38,14 +38,12 @@ for (n in 1:(N-1)) {
                          prob = transition_probs[i,])
   }
 }
-
-#Transponemos la matriz para que el modelo de Stan la acepte
 Z <- t(Z)
 
 ## Fit del modelo --------------------------------------------------------------
 fit_5tipos <- mod_5types$sample(data = list(N = N, Z = t(Z)),
-                                seed = 182120, chains = 4,
-                                parallel_chains = 4,
+                                seed = 182120, chains = 1,
+                                parallel_chains = 1,
                                 iter_warmup = 5000,
                                 iter_sampling = 10000)
 
