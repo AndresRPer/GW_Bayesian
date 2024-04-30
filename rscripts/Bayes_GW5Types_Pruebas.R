@@ -47,11 +47,3 @@ fit_5tipos <- mod_5types$sample(data = list(N = N, Z = t(Z)),
                                 iter_warmup = 5000,
                                 iter_sampling = 10000)
 
-
-
-
-
-
-
-
-
