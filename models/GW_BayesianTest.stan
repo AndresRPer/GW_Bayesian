@@ -13,7 +13,7 @@ model {
   // Non-informative priors for the offspring distribution
   for (k in 1:K) {
     // Non-informative prior for Dirichlet (effectively, Dirichlet(1))
-    offspring_distribution[k] ~ dirichlet(rep_vector(1.0, K));
+    offspring_distribution[k] ~ dirichlet(rep_vector(0.5, K));
   }
 
   // Likelihood: simulate the counts of individuals at the next generation
