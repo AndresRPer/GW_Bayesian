@@ -12,7 +12,6 @@ library(coda)
 
 ## Cambia el default del tamaño de fuente --------------------------------------
 theme_set(theme_linedraw(base_size = 14))
-
 ##Cambia el número de decimales ------------------------------------------------
 options(digits = 4)
 
